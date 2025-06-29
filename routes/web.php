@@ -15,6 +15,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
     Route::get('/profiles', [ProfileController::class, 'index'])->name('profiles.index');
     Route::post('/profiles', [ProfileController::class, 'store'])->name('profiles.store');
 
