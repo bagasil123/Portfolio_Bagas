@@ -6,8 +6,7 @@
     <title>Portofolio Website | Bagas Indra Lesmana</title>
     
     {{-- Memuat file CSS dari folder public --}}
-    <link rel="stylesheet" href="https://portfolio-bagas-fnz2dnd6dskauhdd.southeastasia-01.azurewebsites.net/css/styles.css">
-    <script src="https://portfolio-bagas-fnz2dnd6dskauhdd.southeastasia-01.azurewebsites.net/js/script.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <meta name="description" content="Portofolio Bagas Indra Lesmana. Junior developer untuk web dan mobile.">
 
@@ -32,6 +31,7 @@
     @yield('content')
 
     {{-- Memuat semua file JavaScript di akhir untuk performa yang lebih baik --}}
+    <script src="{{ asset('js/script.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
