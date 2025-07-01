@@ -1,9 +1,7 @@
 {{--
 |--------------------------------------------------------------------------
-| Form Partial untuk Projects
+| Form Partial untuk Projects (dengan Cloudinary Widget)
 |--------------------------------------------------------------------------
-| File ini berisi semua elemen form yang dibutuhkan untuk membuat dan
-| mengedit proyek, termasuk logika untuk widget upload.
 --}}
 <div class="space-y-6">
     {{-- Input Judul Proyek --}}
@@ -12,14 +10,18 @@
         <input type="text" name="title" id="title" class="mt-1 block w-full rounded-md dark:bg-gray-700" value="{{ old('title', $project->title ?? '') }}" required>
     </div>
 
-    {{-- BAGIAN PENTING: Tombol dan Preview untuk Widget --}}
+    {{-- =================================================================== --}}
+    {{-- BAGIAN YANG DIPERBAIKI: TIDAK ADA <input type="file"> --}}
+    {{-- =================================================================== --}}
     <div>
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Project Image</label>
-        {{-- 1. Tombol untuk membuka widget --}}
+        
+        {{-- Ini adalah tombol biasa, bukan input file. Klik pada tombol ini akan menjalankan JavaScript. --}}
         <button type="button" id="upload_widget_project" class="mt-2 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-500">
             Upload Image
         </button>
-        {{-- 2. Input tersembunyi untuk menyimpan URL gambar --}}
+        
+        {{-- Input tersembunyi untuk menyimpan URL gambar dari Cloudinary --}}
         <input type="hidden" name="image_url" id="image_url" value="{{ old('image_url', $project->image_url ?? '') }}">
         
         <div class="mt-4">
@@ -31,6 +33,10 @@
             @endif
         </div>
     </div>
+    {{-- =================================================================== --}}
+    {{-- AKHIR BAGIAN PERBAIKAN --}}
+    {{-- =================================================================== --}}
+
 
     {{-- Input lainnya --}}
     <div>
@@ -63,11 +69,10 @@
     </div>
 </div>
 
-{{-- BAGIAN PENTING: Script untuk menjalankan Widget --}}
+{{-- Script JavaScript untuk menjalankan Widget --}}
 @push('scripts')
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 <script type="text/javascript">
-    // 3. Inisialisasi widget dan menempelkannya ke tombol
     const projectWidget = cloudinary.createUploadWidget({
         cloudName: "dex2f8xur", 
         uploadPreset: "portfolio_bagas",
