@@ -102,6 +102,20 @@
             @endforeach
         </section>
         @endif
+        {{-- Desktop Mode Suggestion Popup --}}
+        <div id="desktopModePopup" class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-icon">
+                    <ion-icon name="desktop-outline"></ion-icon>
+                </div>
+                <h2>Pengalaman Terbaik di Desktop</h2>
+                <p>
+                    Portofolio ini dirancang dengan detail interaktif yang paling baik dinikmati pada layar yang lebih besar.
+                    Untuk pengalaman maksimal, kami sarankan untuk mengaktifkan "Situs Desktop" pada browser Anda.
+                </p>
+                <button id="confirmDesktopMode" class="popup-button">Saya Mengerti</button>
+            </div>
+        </div>
     </main>
 
 {{-- Mengakhiri bagian konten --}}
